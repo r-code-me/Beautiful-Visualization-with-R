@@ -4,7 +4,7 @@
 library(ggplot2)
 #library(RColorBrewer)
 #library(reshape2)
-df<-read.csv("MappingAnalysis_Data.csv", header = TRUE)
+df<-read.csv("./第1章 R语言编程与绘图基础/MappingAnalysis_Data.csv", header = TRUE)
 
 #--------------------------------------Size---------------------------
 ggplot(data=df, aes(x=Time,y=value,group=variable)) + 
@@ -82,3 +82,4 @@ ggplot(data=df, aes(x=Time,y=value,fill=variable,shape=variable)) +
     legend.background = element_blank(),
     legend.position=c(0.2,0.8)
   )
+
