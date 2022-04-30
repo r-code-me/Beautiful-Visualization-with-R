@@ -1,7 +1,7 @@
 #EasyCharts团队出品，
 #如有问题修正与深入学习，可联系微信：EasyCharts
 
-df<-read.csv("Facet_Data.csv", header = TRUE)
+df<-read.csv("./第1章 R语言编程与绘图基础/Facet_Data.csv", header = TRUE)
 
 #-------------------------base----------------------------
 
