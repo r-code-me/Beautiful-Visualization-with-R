@@ -7,6 +7,8 @@ library(RColorBrewer)
 library(ggrepel)
 attach(mtcars)
 
+head(mtcars)
+
  #-------------------------------(c) 带数据标签的气泡图-------------------------------------------------------------
 
  ggplot(data=mtcars, aes(x=wt,y=mpg))+
@@ -22,6 +24,25 @@ attach(mtcars)
      axis.text = element_text(size=10,face="plain",color="black"),
      legend.position = "right"
    )
+
+#-------------------------------(c) 带数据标签的气泡图，有拟合-------------------------------------------------------------
+
+ggplot(data=mtcars, aes(x=wt,y=mpg))+
+  geom_point(aes(size=disp,fill=disp),shape=21,colour="black",alpha=0.8)+
+  
+  geom_smooth(method="lm",se=TRUE,formula=y ~ log(x),colour="red")+
+  
+  scale_fill_gradient2(low="#377EB8",high="#E41A1C",midpoint = mean(mtcars$disp))+
+  geom_text_repel(label = disp )+
+  scale_size_area(max_size=12)+
+  guides(size = guide_legend((title="Value")),
+         fill = guide_legend((title="Value")))+
+  theme(
+    legend.text=element_text(size=10,face="plain",color="black"),
+    axis.title=element_text(size=10,face="plain",color="black"),
+    axis.text = element_text(size=10,face="plain",color="black"),
+    legend.position = "right"
+  )
 
 
 #--------------------------(d) 方块状的气泡图--------------------------------------------------

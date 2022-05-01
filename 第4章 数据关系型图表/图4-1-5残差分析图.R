@@ -4,7 +4,7 @@
 
 library(ggplot2)
 
-mydata<-read.csv("Residual_Analysis_Data.csv",stringsAsFactors=FALSE)
+mydata<-read.csv("./第4章 数据关系型图表/Residual_Analysis_Data.csv",stringsAsFactors=FALSE)
 
 fit <- lm(y2 ~ x, data = mydata)
 mydata$predicted <- predict(fit)   # Save the predicted values
