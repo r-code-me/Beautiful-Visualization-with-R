@@ -26,6 +26,7 @@ head(mtcars)
    )
 
 #-------------------------------(c) 带数据标签的气泡图，有拟合-------------------------------------------------------------
+# 要对repel进行配置：https://mran.microsoft.com/snapshot/2017-08-20/web/packages/ggrepel/vignettes/ggrepel.html
 
 ggplot(data=mtcars, aes(x=wt,y=mpg))+
   geom_point(aes(size=disp,fill=disp),shape=21,colour="black",alpha=0.8)+
@@ -35,8 +36,8 @@ ggplot(data=mtcars, aes(x=wt,y=mpg))+
   scale_fill_gradient2(low="#377EB8",high="#E41A1C",midpoint = mean(mtcars$disp))+
   geom_text_repel(label = disp )+
   scale_size_area(max_size=12)+
-  guides(size = guide_legend((title="Value")),
-         fill = guide_legend((title="Value")))+
+  scale_y_continuous(position = "right")+
+  guides(size = guide_legend((title="Value")), fill = guide_legend((title="Value")))+
   theme(
     legend.text=element_text(size=10,face="plain",color="black"),
     axis.title=element_text(size=10,face="plain",color="black"),
