@@ -49,16 +49,22 @@ ggplot(data=mtcars, aes(x=wt,y=mpg))+
   
   geom_smooth(method="lm",se=TRUE,formula=y ~ log(x),colour="red")+
   
-  scale_fill_gradient2(low="#377EB8", high="#E41A1C", midpoint = mean(mtcars$disp))+ # 汽泡填充颜色的范围
-  geom_text_repel(label = disp)+
+  scale_fill_gradient2(low="#E7C68C", high="#1F4F70", midpoint = mean(mtcars$disp))+ # 汽泡填充颜色的范围
+
+  
+  geom_text_repel(label = disp)+ # 汽泡文字
   scale_size_area(max_size=8)+ # 汽泡面积最大值
   scale_y_continuous(position = "right")+ # Y轴的刻度放置在右边
-  guides(size = guide_legend((title="Value")), fill = guide_legend((title="Value")))+
+  guides(size = guide_legend((title="Value")), fill = guide_legend((title="Value")))+ # 图例
   theme(
     legend.text = element_text(size=10, face="plain", color="black"),
     axis.title = element_text(size=10, face="plain", color="black"),
     axis.text = element_text(size=10, face="plain", color="black"),
-    legend.position = "right"
+    axis.line = element_line(size = 0.1, linetype = "solid", colour = "#CCCCCD"),
+    panel.background = element_rect(fill = "white"),
+    legend.position = "right",
+    panel.grid.major = element_line(colour = "#CCCCCD"),
+    panel.grid.minor = element_line(colour = "#CCCCCD")
   )
 
 
