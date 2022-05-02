@@ -47,7 +47,7 @@ ggplot(mtcars, aes(wt,mpg))+
 ggplot(data=mtcars, aes(x=wt,y=mpg))+
   geom_point(aes(size=disp,fill=disp),shape=21,colour="white",alpha=0.8)+
   
-  geom_smooth(method="lm", se=TRUE, formula=y ~ log(x), colour="#728893", linetype = "dashed")+
+  geom_smooth(method="lm", se=FALSE, formula=y ~ log(x), colour="#728893", linetype = "dashed")+
   
   scale_fill_gradient2(low="#E7C68C", mid="#AED0BD", high="#1F4F70", midpoint = mean(mtcars$disp))+ # 汽泡填充颜色的范围
 
