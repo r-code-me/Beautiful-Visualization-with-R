@@ -25,27 +25,6 @@ head(mtcars)
      legend.position = "right"
    )
 
-#-------------------------------(c) 带数据标签的气泡图，有拟合-------------------------------------------------------------
-# 要对repel进行配置：https://mran.microsoft.com/snapshot/2017-08-20/web/packages/ggrepel/vignettes/ggrepel.html
-
-ggplot(data=mtcars, aes(x=wt,y=mpg))+
-  geom_point(aes(size=disp,fill=disp),shape=21,colour="black",alpha=0.8)+
-  
-  geom_smooth(method="lm",se=TRUE,formula=y ~ log(x),colour="red")+
-  
-  scale_fill_gradient2(low="#377EB8",high="#E41A1C",midpoint = mean(mtcars$disp))+
-  geom_text_repel(label = disp )+
-  scale_size_area(max_size=12)+
-  scale_y_continuous(position = "right")+
-  guides(size = guide_legend((title="Value")), fill = guide_legend((title="Value")))+
-  theme(
-    legend.text=element_text(size=10,face="plain",color="black"),
-    axis.title=element_text(size=10,face="plain",color="black"),
-    axis.text = element_text(size=10,face="plain",color="black"),
-    legend.position = "right"
-  )
-
-
 #--------------------------(d) 方块状的气泡图--------------------------------------------------
 ggplot(mtcars, aes(wt,mpg))+
   geom_point(aes(size=disp,fill=disp),shape=22,colour="black",alpha=0.8)+
@@ -59,3 +38,38 @@ ggplot(mtcars, aes(wt,mpg))+
     plot.title=element_text(size=15,family="myfont",face="bold.italic",color="black")#,
     #legend.position=c(0.9,0.05)
   )
+
+
+#-------------------------------(c) 带数据标签的气泡图，有拟合-------------------------------------------------------------
+# 要对repel进行配置：https://mran.microsoft.com/snapshot/2017-08-20/web/packages/ggrepel/vignettes/ggrepel.html
+# 图例的要水平摆放，且放进图片中。
+
+ggplot(data=mtcars, aes(x=wt,y=mpg))+
+  geom_point(aes(size=disp,fill=disp),shape=21,colour="black",alpha=0.8)+
+  
+  geom_smooth(method="lm",se=TRUE,formula=y ~ log(x),colour="red")+
+  
+  scale_fill_gradient2(low="#377EB8", high="#E41A1C", midpoint = mean(mtcars$disp))+ # 汽泡填充颜色的范围
+  geom_text_repel(label = disp)+
+  scale_size_area(max_size=8)+ # 汽泡面积最大值
+  scale_y_continuous(position = "right")+ # Y轴的刻度放置在右边
+  guides(size = guide_legend((title="Value")), fill = guide_legend((title="Value")))+
+  theme(
+    legend.text = element_text(size=10, face="plain", color="black"),
+    axis.title = element_text(size=10, face="plain", color="black"),
+    axis.text = element_text(size=10, face="plain", color="black"),
+    legend.position = "right"
+  )
+
+
+
+
+
+
+
+
+
+
+
+
+
